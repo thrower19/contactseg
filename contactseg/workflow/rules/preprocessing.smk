@@ -19,6 +19,8 @@ rule n4biascorr:
             extension=".nii.gz",
             **inputs["pre_t1w"].wildcards,
         ),
+    conda:
+        "../envs/image_processing.yaml"
     script:
         "../scripts/n4_bias_corr.py"
 
@@ -66,6 +68,8 @@ rule get_registration_matrix:
             suffix="ct.nii.gz",
             **inputs["post_ct"].wildcards,
         ),
+    conda:
+        "../envs/image_processing.yaml"
     script:
         "../scripts/registration.py"
 
@@ -103,5 +107,7 @@ if config["manual_reg_matrix"]:
                 suffix="ct.nii.gz",
                 **inputs["post_ct"].wildcards,
             ),
+        conda:
+            "../envs/image_processing.yaml"
         script:
             "../scripts/apply_registration.py"
