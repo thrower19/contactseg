@@ -3,8 +3,7 @@ name: image-proc
 channels: [bioconda, conda-forge, defaults]
 dependencies:
   - python=3.10
-  - nibabel
-  - numpy
-  - ants
-  - scikit-image
-  - scipy
+  - numpy #apply_registration, registration
+  - ants #apply_registration, n4_bias, registration
+
+  #  - nibabel not sure if needed here, seems to be installed with ants
